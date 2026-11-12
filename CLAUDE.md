@@ -3,7 +3,7 @@
 Guía web personal en castellano para completar Pokelike, el roguelike de Pokémon de navegador y móvil
 (https://pokelike.xyz, v3.6.3 del 7-11-2026). La usan el usuario y un amigo.
 
-**Fase actual: primera versión construida (12-11-2026), sin commit.** Commits solo cuando el usuario lo pida.
+**Fase actual (12-11-2026): guía completa y publicada en GitHub Pages (https://alvaroportillo.github.io/pokelike-guia/), con secciones Variocolor y Aurora y Novedades (notas de versión). Siguiente paso: rediseño visual moderno (`impeccable` init + PRODUCT.md; Scenario Pro para imágenes).** Commits solo cuando el usuario lo pida.
 Lo imprescindible (pedido «sí o sí»): Historia completa con mejores equipos, Torre Batalla con mejores
 combinaciones de tipos, Desafíos, Megaevoluciones. Prioridad: que un amigo novato se pase Historia y Torre.
 

@@ -16,7 +16,7 @@ ${pageHead('Rasgos de tipo', 'Cada tipo que tengas en el equipo activa un <stron
   <p>Leído en el código del juego (v3.6.3):</p>
   <ul>
     <li>Cada Pokémon del equipo da <strong>1 punto a cada uno de sus tipos</strong>. Un Pokémon Planta/Veneno da 1 punto a Planta y 1 a Veneno.</li>
-    <li>Un <strong>shiny da 1 punto más</strong> (2 a cada tipo).</li>
+    <li>Un <strong>variocolor da 1 punto más</strong> (2 a cada tipo) y un <strong>Aurora, 2 más</strong> (3 a cada tipo). Ver <a href="#/variocolor">Variocolor y Aurora</a>.</li>
     <li><strong>Cada 2 puntos de un tipo = 1 rango</strong> de su rasgo. El máximo es el rango 12.</li>
   </ul>
   <div class="table-wrap" style="max-width:560px"><table>
@@ -26,7 +26,7 @@ ${pageHead('Rasgos de tipo', 'Cada tipo que tengas en el equipo activa un <stron
       <tr><td>2</td><td class="num">2</td><td class="num">1</td></tr>
       <tr><td>4</td><td class="num">4</td><td class="num">2</td></tr>
       <tr><td>6</td><td class="num">6</td><td class="num">3</td></tr>
-      <tr><td>6, todos shiny</td><td class="num">12</td><td class="num">6</td></tr>
+      <tr><td>6, todos variocolor</td><td class="num">12</td><td class="num">6</td></tr>
     </tbody>
   </table></div>
   <p class="muted" style="margin-top:.6rem">Algunos objetos y efectos del juego suman rangos extra; por eso existen rangos por encima del 6.</p>

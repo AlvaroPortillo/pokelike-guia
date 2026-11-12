@@ -170,6 +170,13 @@ const out = {
   nodes: es.ui.mapUi,
   // Rasgos por tipo: texto del juego en español para cada rango (1..12).
   traits: es.traits,
+  // Notas de versión del juego: texto en español cuando el juego lo trae; si no, como lo muestra (original).
+  patchNotes: d.PATCH_NOTES.map((p) => {
+    const t = p.i18n && p.i18n.es;
+    return { version: p.version, date: p.date, title: (t && t.title) || p.title, sections: (t && t.sections) || p.sections, es: !!t };
+  }),
+  // Variocolor y Aurora (código del juego): prob. base, Amuleto Iris, reparto Aurora y textos del juego.
+  shiny: { base: 0.01, iris: 0.02, auroraShare: 0.1, auroraShareCharm: 0.2, ui: es.ui.aurora, irisUi: { name: es.ui.ux.shinyCharm, locked: es.ui.ux.shinyCharmLocked }, patch: es.ui.patchIntro },
 };
 fs.mkdirSync(path.dirname(outFile), { recursive: true });
 fs.writeFileSync(outFile, JSON.stringify(out));

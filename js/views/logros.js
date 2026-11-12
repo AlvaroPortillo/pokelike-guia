@@ -42,7 +42,7 @@ ${pageHead('Logros', `Los ${d.achievements.length} logros del juego con su texto
   <div class="stat"><div class="stat__label">Dinero que queda por ganar</div><div class="stat__val">${pd(total - earned)}</div></div>
 </div>
 <div class="toolbar">
-  <input class="input" type="search" id="ach-q" placeholder="Buscar logro (p. ej. Nuzlocke, shiny, Kanto)…" value="${esc(query)}" aria-label="Buscar logro" style="flex:1 1 260px">
+  <input class="input" type="search" id="ach-q" placeholder="Buscar logro (p. ej. Nuzlocke, variocolor, Kanto)…" value="${esc(query)}" aria-label="Buscar logro" style="flex:1 1 260px">
   <select class="input" id="ach-show" aria-label="Mostrar">
     <option value="todos" ${show === 'todos' ? 'selected' : ''}>Todos</option>
     <option value="pendientes" ${show === 'pendientes' ? 'selected' : ''}>Solo pendientes</option>

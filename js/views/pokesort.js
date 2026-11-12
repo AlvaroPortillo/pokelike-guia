@@ -46,7 +46,7 @@ ${todayBlock(d, p.conds)}
   <h2>Reglas exactas</h2>
   <ul>
     <li><strong>6 Pokémon</strong> en fila y <strong>5 enlaces</strong> entre vecinos. Cada enlace tiene una condición y la fila es correcta cuando se cumplen las 5.</li>
-    <li>Salen Pokémon de la <strong>Gen 1 a la 6</strong>, nunca legendarios. No hay shinys.</li>
+    <li>Salen Pokémon de la <strong>Gen 1 a la 6</strong>, nunca legendarios. No hay variocolor.</li>
     <li>Cada puzle tiene <strong>una sola solución</strong> y siempre mezcla al menos dos tipos de condición.</li>
     <li>Tienes <strong>${c.pokesortLives} vidas</strong>. Cada vez que pulsas «Enviar» con algún enlace mal, pierdes una y el juego te dice cuántos enlaces están bien.</li>
     <li>El puzle es el mismo para todos ese día.</li>

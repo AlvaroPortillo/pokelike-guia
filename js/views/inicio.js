@@ -1,16 +1,11 @@
-import { esc, pd, fmt } from '../util.js';
+import { esc, pd } from '../util.js';
 import { pageHead } from './common.js';
-
-const pct = (p) => `${(p * 100).toFixed(p < 0.1 ? 1 : 0).replace('.', ',')} %`;
-const atLeastOne = (p, n) => 1 - (1 - p) ** n;
-const nFor = (p, target) => Math.ceil(Math.log(1 - target) / Math.log(1 - p));
 
 export default {
   render(d) {
     const n = d.nodes;
     const c = d.constants;
     const totalAch = d.achievements.reduce((s, a) => s + (a.reward || 0), 0);
-    const rows = [10, 25, 50, 100, 200].map((k) => `<tr><td class="num">${k}</td><td class="num">${pct(atLeastOne(c.shinyBase, k))}</td><td class="num">${pct(atLeastOne(c.shinyCharm, k))}</td></tr>`).join('');
     const fill = (s, v) => esc(String(s).replace(/\{n\}/g, v));
     return `
 ${pageHead('Guía para completar Pokelike', 'Todo lo necesario para pasarse la <strong>Historia</strong> y la <strong>Torre Batalla</strong>, los <strong>Desafíos</strong>, las <strong>Megaevoluciones</strong> y el <strong>Pokésort</strong> diario. Los nombres salen tal cual aparecen con el juego en español.')}
@@ -53,13 +48,8 @@ ${pageHead('Guía para completar Pokelike', 'Todo lo necesario para pasarse la <
     <li><strong>Marca lo que vas haciendo</strong> en cada sección, o importa tu progreso del juego desde <a href="#/progreso">Mi progreso</a>.</li>
   </ul>
 
-  <h2 id="probabilidades">Probabilidades que conviene saber</h2>
-  <p>En las partidas, cada Pokémon que aparece tiene un <strong>${pct(c.shinyBase)}</strong> de ser shiny. Con la Pokédex de Kanto completa sube a <strong>${pct(c.shinyCharm)}</strong>, y algunos efectos de la partida lo duplican. El Pokésort no tiene shinys.</p>
-  <div class="table-wrap" style="max-width:520px"><table>
-    <thead><tr><th class="num">Pokémon vistos</th><th class="num">Al menos 1 shiny (1 %)</th><th class="num">Al menos 1 shiny (2 %)</th></tr></thead>
-    <tbody>${rows}</tbody>
-  </table></div>
-  <p class="muted" style="margin-top:.6rem">Para tener un 50 % de ver al menos uno hacen falta ${fmt(nFor(c.shinyBase, 0.5))} Pokémon con el 1 % y ${fmt(nFor(c.shinyCharm, 0.5))} con el 2 %. Cada intento es independiente: llevar muchos sin shiny no hace más probable el siguiente.</p>
+  <h2 id="probabilidades">Variocolor y Aurora</h2>
+  <p>Cada Pokémon que aparece tiene un <strong>1 %</strong> de ser variocolor (2 % con el Amuleto Iris), y algunos son <strong>Aurora</strong>, aún más raros. Además de ser raros, refuerzan los rasgos de tipo. Lo tienes explicado, con las probabilidades, en <a href="#/variocolor">Variocolor y Aurora</a>.</p>
 </div>
 
 <aside class="toc panel" aria-label="En esta página">
@@ -68,7 +58,7 @@ ${pageHead('Guía para completar Pokelike', 'Todo lo necesario para pasarse la <
     <li><a href="#partida" data-local>Cómo es una partida</a></li>
     <li><a href="#orden" data-local>Orden de desbloqueo</a></li>
     <li><a href="#consejos">Consejos para empezar</a></li>
-    <li><a href="#probabilidades">Probabilidades</a></li>
+    <li><a href="#probabilidades">Variocolor y Aurora</a></li>
   </ol>
   <h3>Secciones</h3>
   <ol>
@@ -78,6 +68,8 @@ ${pageHead('Guía para completar Pokelike', 'Todo lo necesario para pasarse la <
     <li><a href="#/megas">Megaevoluciones (${d.megas.length})</a></li>
     <li><a href="#/pokesort">Pokésort diario</a></li>
     <li><a href="#/logros">Logros (${d.achievements.length})</a></li>
+    <li><a href="#/rasgos">Rasgos de tipo</a></li>
+    <li><a href="#/novedades">Novedades del juego</a></li>
   </ol>
 </aside>
 </div>`;

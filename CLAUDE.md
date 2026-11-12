@@ -3,13 +3,37 @@
 Guía web personal en castellano para completar Pokelike, el roguelike de Pokémon de navegador y móvil
 (https://pokelike.xyz, v3.6.3 del 7-11-2026). La usan el usuario y un amigo.
 
-**Fase actual: solo planificación.** No crear archivos, código ni commits salvo que el usuario lo pida.
+**Fase actual: primera versión construida (12-11-2026), sin commit.** Commits solo cuando el usuario lo pida.
+Lo imprescindible (pedido «sí o sí»): Historia completa con mejores equipos, Torre Batalla con mejores
+combinaciones de tipos, Desafíos, Megaevoluciones. Prioridad: que un amigo novato se pase Historia y Torre.
+
+## Estructura de la web
+- `index.html` + `css/styles.css` + `js/app.js` (router por hash `#/seccion/sub`), `js/store.js` (progreso en
+  `localStorage` clave `pokelike-guia:v1`, exportar/importar, marcador que copia `poke_achievements` y
+  `poke_challenges_done` desde pokelike.xyz), `js/util.js`, `js/views/*.js` (una por sección).
+- `data/guia.json`: todos los datos del juego, generado por `tools/build-data.js` a partir de volcados sacados
+  con Playwright evaluando las constantes globales del juego en pokelike.xyz con `setLanguage('es')`
+  (`dump.json`, `dump2.json`, `i18n_es.json`, `es1.json`, `tower2.json`). Equipos sugeridos y coberturas
+  son cálculos propios (tabla de tipos + estadísticas base del juego) y la web lo dice.
+- Sprites: PokeAPI/sprites en GitHub. Fuente: DotGothic16 (OFL) autoalojada en `assets/fonts`.
+- Kalos: Alto Mando y Campeona salen de `KALOS_ELITE_4` (volcado `ke4.json`).
+- Pokésort: `js/pokesort-gen.js` reproduce el generador del juego (`pcGeneratePuzzle`); coincide en 20/20 días
+  reales. Día del juego = fecha en Europe/Berlin (= España peninsular); el diario Mono-tipo es día % 18.
+- Rasgos de tipo (código): cada Pokémon da 1 punto a cada tipo suyo (+1 si shiny); rango = puntos/2, máx. 12.
+- Comunidad: consejos de pokelike-guide.fr (escrita para v2.x) con enlace y aviso de versión. pokelike.site es un
+  clon no oficial: no usarlo como fuente.
+- `impeccable` instalado completo el 12-11-2026 (`npx skills add pbakaus/impeccable -g`); detector limpio.
+  Falta su flujo `init` (PRODUCT.md) si se quiere rediseño.
+- Repo recreado en GitHub el 12-11-2026: un solo contribuidor (AlvaroPortillo). Git local del repo con
+  `user.name=AlvaroPortillo`, `user.email=alvaro7portillo77@gmail.com`. Nunca añadir `Co-Authored-By`.
 
 ## Reglas del proyecto (pedidas por el usuario)
 - **Todo en castellano.** El usuario juega con el juego 100 % en español: nombres de Pokémon, objetos,
   movimientos, modos y lugares tal como salen en español. Cero fallos de traducción, nada inventado.
+  Regla fija: cada texto, exactamente como sale con el juego en español, aunque ahí se quede en inglés
+  (p. ej. «Safari Zone»). No volver a preguntar por idioma ni por nombres.
 - Contenido sacado de fuentes reales (Reddit, foros, webs de guías, Discord, X…), con la fuente enlazada.
-- Guía por cada nivel de la campaña, Torre Batalla, Poke-Resort y modos de desafío.
+- Guía por cada nivel de la campaña, Torre Batalla, Pokésort diario y modos de desafío.
 - Progreso marcable, guardado en `localStorage` con exportar/importar en JSON (como su guía de Kingdom Hearts,
   repo `AlvaroPortillo/kh-guia-100`). Cada persona usa su propio navegador.
 - Arquitectura simple y funcional: HTML + CSS + JS (módulos ES), sin compilación, publicada en GitHub Pages
@@ -42,7 +66,18 @@ Guía web personal en castellano para completar Pokelike, el roguelike de Pokém
   (5 regiones: Kanto, Johto, Hoenn, Sinnoh, Teselia), Desafíos (12 permanentes + diarios y semanales),
   Pokésort diario, Multijugador (próximamente). En el código aparecen también Endless, Spire, Soul Link,
   Pokechain, Megas y fusiones.
-- **Poke-Resort:** no aparece en el código ni en ninguna web. Pendiente de que el usuario diga dónde lo ve.
+- **Pokésort diario:** lo que el usuario llamaba «Poke-Resort» (en el código, `pokechain`). Sin shinys.
+  6 Pokémon (no legendarios, Gen 1–6) para ordenar; 5 enlaces entre vecinos, cada uno con una condición:
+  Color, Tipo, Gen (=, >, <), Etapa (=, >, <) o Supera (supereficaz izq.→der.). Solución única. 4 vidas.
+  Puzle igual para todos, generado por día. Recompensa en código: `500 + (racha−1)×10` ₽, una vez al día.
+  Día de gracia: salva la racha si fallas un día; se recarga tras 7 soluciones. Guardado: `poke_pokechain`.
+- **Datos extraídos del juego (12-11-2026, v3.6.3):** con el juego en español, los nombres de mapas y de
+  líderes salen en inglés (cabecera «Rustboro City: vs. Roxanne (Roca)»); tipos, objetos, logros y desafíos
+  salen en español; la región 5 sale como «Teselia». Historia: 6 regiones (Kanto → Kalos), 9 mapas cada una
+  (8 gimnasios + Liga). 265 logros (`poke_achievements` = array de ids; recompensa ₽ según categoría).
+  Desafíos hechos en `poke_challenges_done` (array de ids). Desafío diario Mono-tipo: rota los 18 tipos,
+  reinicio con hora de Europe/Berlin. Shiny en partidas: 1 % base, 2 % con la Pokédex de Kanto completa,
+  ×2 con ciertas pasivas/eventos.
 - **Notas de versión:** solo dentro del juego (sin URL pública).
 
 ## Fuentes encontradas
@@ -53,7 +88,3 @@ Guía web personal en castellano para completar Pokelike, el roguelike de Pokém
 - Prensa: https://androidphoria.com/juegos/pokelike-roguelike-de-pokemon
 - No oficiales / clones: pokelike.click, poke-like.com, pokelike.site.
 - No se encontró subreddit r/Pokelike confirmado ni cuenta oficial en X.
-
-## Preguntas abiertas para el usuario
-1. ¿Dónde está el Poke-Resort en el juego y con qué nombre exacto sale en pantalla?
-2. Si el juego deja un nombre en inglés («Safari Zone»): ¿usar el oficial en español («Zona Safari») o el del juego?

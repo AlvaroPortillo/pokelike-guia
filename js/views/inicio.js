@@ -48,6 +48,42 @@ ${pageHead('Guía para completar Pokelike', 'Todo lo necesario para pasarse la <
     <li><strong>Marca lo que vas haciendo</strong> en cada sección, o importa tu progreso del juego desde <a href="#/progreso">Mi progreso</a>.</li>
   </ul>
 
+  <h2 id="niveles">Cómo subir niveles (lo que más falla al empezar)</h2>
+  <p>El consejo que más se repite en la comunidad es «sube más niveles». En la práctica:</p>
+  <ul>
+    <li><strong>Antes de elegir camino, mira todo el mapa</strong> y coge la ruta con más combates contra entrenadores. Si el primer mapa sale malo, reinicia: no pierdes nada.</li>
+    <li><strong>Referencia:</strong> si tu inicial llega a <strong>Nv. 36 antes del 3.er gimnasio</strong>, vas bien.</li>
+    <li><strong>No cojas Pokémon de más.</strong> Un buen ritmo: el inicial, la Poké Ball de arriba a la izquierda de las rutas 1, 3, 8 y 9, y uno de una casilla «?». Evita capturar en los mapas 2 y 7: en el siguiente salen con un ataque más fuerte.</li>
+    <li><strong>Dos MT pronto</strong> para tu Pokémon principal (una tercera para el de apoyo, nunca más de cuatro).</li>
+    <li><strong>Pocos objetos:</strong> como mucho 5 antes de la ruta 9, y nada que dependa de la suerte (retroceso, críticos…). Una Lupa basta.</li>
+    <li><strong>No pares en todos los Centros Pokémon</strong>, sobre todo si llevas Restos: esos 1 o 2 niveles extra se acumulan.</li>
+    <li><strong>No arriesgues al final.</strong> Si ya tienes tu equipo para la Liga, no te juegues la partida por una Master Ball o un Entrenador Guay.</li>
+  </ul>
+  <p><small class="muted">Fuente: «How to get levels», de blooddealer, en el <a href="https://discord.com/channels/1493295201597264044/1544947178479423498" rel="noopener">Discord oficial</a> (pide cuenta). Escrita para Johto, vale igual para las demás regiones.</small></p>
+
+  <h2 id="faq">Preguntas frecuentes</h2>
+  <dl class="faq">
+    <dt>¿Cómo desbloqueo un Pokémon como inicial?</dt>
+    <dd>Gana una partida con él en el equipo y regístralo en el Salón de la Fama (con legendarios no vale), o cómpralo en huevo en la Tienda Poké (ahí sí hay legendarios, pero no salen Celebi, Jirachi, Shaymin, Victini ni Hoopa). Los Pokémon que te dan algunas pasivas del Modo Desafío, las que cambian tu equipo por Pokémon al azar o te dan un legendario (Star Piece, Comet Shard, Legends Call), no se desbloquean.</dd>
+    <dt>¿Qué significa la Poké Ball o la Super Ball en las capturas?</dt>
+    <dd>Poké Ball: ya lo tienes en la Pokédex, pero aún no es inicial. Super Ball: ya puedes empezar con él. A veces los variocolor salen con Poké Ball por error.</dd>
+    <dt>¿Dónde encuentro el Pokémon que quiero?</dt>
+    <dd>En la Pokédex del juego (arriba a la derecha): cada Pokémon dice en qué mapas sale su línea evolutiva, en Historia y en la Torre.</dd>
+    <dt>He olvidado la contraseña de mi cuenta</dt>
+    <dd>No se puede cambiar desde el juego. Abre un ticket en el canal <em>bugs-and-ideas</em> del Discord oficial con la etiqueta «Password Reset» y capturas que prueben que la cuenta es tuya. Nunca pongas la contraseña en el mensaje. Al iniciar sesión, usuario y contraseña distinguen mayúsculas.</dd>
+    <dt>¿Se puede instalar como app?</dt>
+    <dd>No hay app oficial. En el móvil, abre pokelike.xyz en Chrome → menú ⋮ → «Añadir a pantalla de inicio».</dd>
+  </dl>
+  <p><small class="muted">Fuente: canales <em>faq</em> y <em>wiki</em> del Discord oficial (leídos el 13-11-2026).</small></p>
+
+  <h2 id="comunidad">Comunidad oficial</h2>
+  <p>El único dominio real del juego es <strong>pokelike.xyz</strong>: hay muchas copias con nombres parecidos. Los enlaces oficiales son:</p>
+  <ul>
+    <li><a href="https://pokelike.xyz" rel="noopener">pokelike.xyz</a>: el juego.</li>
+    <li><a href="https://discord.gg/YsakfWStYq" rel="noopener">Discord oficial</a>: anuncios de cada parche, pistas diarias del Pokésort y guías de jugadores (en inglés, con un canal en español).</li>
+    <li><a href="https://www.reddit.com/r/Pokelike/" rel="noopener">r/Pokelike</a> en Reddit.</li>
+  </ul>
+
   <h2 id="probabilidades">Variocolor y Aurora</h2>
   <p>Cada Pokémon que aparece tiene un <strong>1 %</strong> de ser variocolor (2 % con el Amuleto Iris), y algunos son <strong>Aurora</strong>, aún más raros. Además de ser raros, refuerzan los rasgos de tipo. Lo tienes explicado, con las probabilidades, en <a href="#/variocolor">Variocolor y Aurora</a>.</p>
 </div>
@@ -58,6 +94,9 @@ ${pageHead('Guía para completar Pokelike', 'Todo lo necesario para pasarse la <
     <li><a href="#partida" data-local>Cómo es una partida</a></li>
     <li><a href="#orden" data-local>Orden de desbloqueo</a></li>
     <li><a href="#consejos">Consejos para empezar</a></li>
+    <li><a href="#niveles">Cómo subir niveles</a></li>
+    <li><a href="#faq">Preguntas frecuentes</a></li>
+    <li><a href="#comunidad">Comunidad oficial</a></li>
     <li><a href="#probabilidades">Variocolor y Aurora</a></li>
   </ol>
   <h3>Secciones</h3>

@@ -4,6 +4,36 @@ import { check, pageHead, seg } from './common.js';
 
 const REGION_COLORS = { 1: '#e8503a', 2: '#c0a050', 3: '#60a878', 4: '#7878c8', 5: '#808080', 6: '#4a90d9', 7: '#3f9a8c' };
 
+// Consejos por fase del Discord oficial, canal #usercreated-guides (leído el 13-11-2026, juego v3.6.x).
+const DC_GUIDES = 'https://discord.com/channels/1493295201597264044/1544947178479423498';
+const TOWER_TIPS = {
+  4: {
+    autor: 'Jump',
+    titulo: 'Sinnoh Battletower Non Shiny Charmander Guide',
+    html: '<p><strong>Se puede con un Charmander normal</strong> (sin variocolor), fácil de conseguir en la Torre de Kanto. Dale EV antes: Ataque Especial, Velocidad y PS al máximo. Reinicia el mapa 1 hasta que salga uno con buenos niveles y, si puede ser, una MT; Charmander barre solo al primer jefe. Ayuda tener EV en Pokémon Volador, Tierra o Lucha con buena Velocidad base.</p>',
+  },
+  5: {
+    autor: 'iswilltv',
+    titulo: 'Tips UNOVA',
+    html: '<p><strong>Empoleon con Restos y ataque de Agua de nivel 3</strong>, y a aguantar. Ojo: <strong>Zoroark copia tus mejoras</strong>, así que aquí no te sirven las de Lucha, Veneno ni Hielo.</p>',
+  },
+  7: {
+    autor: 'Jump',
+    titulo: 'Oras Battletower with Shiny Gible Guide',
+    html: '<p><strong>Gible variocolor de inicial.</strong> En el mapa 1, sáltate la primera captura y reinicia hasta un mapa con casi todo entrenadores y una MT: con Nv. 14 y una MT, o Nv. 16-17 sin ella, ganas al primer jefe. En el mapa 2 coge un Pokémon fuerte (mejor con EV) que pelee mientras Gible evoluciona; con Gabite ya barres a los jefes. Hacen falta dos objetos: <strong>Arena Fina o Metrónomo</strong>, para que Garchomp gane al 7.º jefe (Steven, Roca/Acero), y <strong>Pañuelo Elección</strong>, para ser más rápido que el jefe final.</p>',
+  },
+};
+
+function towerTips(st) {
+  const t = TOWER_TIPS[st];
+  if (!t) return '';
+  return `<div class="note" style="margin-top:1.5rem">
+    <p><strong>Una estrategia que funciona en esta fase</strong></p>
+    ${t.html}
+    <p><small class="muted">Fuente: <a href="${DC_GUIDES}" rel="noopener">«${esc(t.titulo)}», de ${esc(t.autor)} (Discord oficial)</a>. El enlace pide cuenta de Discord.</small></p>
+  </div>`;
+}
+
 function stageView(t, d) {
   const clear = d.achievements.find((a) => a.id === `endless_stage_${t.stage}`);
   const starter = d.achievements.find((a) => a.id === `starters_stage_${t.stage}`);
@@ -62,6 +92,7 @@ export default {
 <div class="note" style="margin-bottom:1.5rem"><p><strong>Qué desbloquea:</strong> la Fase 1 abre el Modo Desafío; la Fase 6 (Kalos) da el Mega Bracelet; la Fase 7 (ORAS) abre las Mega Stones de ORAS. Cada fase superada sube el límite de entrenamiento de EV de la Tienda.</p></div>
 ${seg(items, st, 'torre')}
 ${stageView(t, d)}
+${towerTips(st)}
 <h2>Lo que dice la comunidad sobre la Torre</h2>
 <div class="note">
   <p><small class="muted">Fuente: <a href="https://pokelike-guide.fr/es/battle-tower/team-comps/" rel="noopener">Composiciones</a> e <a href="https://pokelike-guide.fr/es/battle-tower/starters/" rel="noopener">Iniciales de la Torre</a> (pokelike-guide.fr). Escrita cuando la Torre tenía 5 regiones y cada fase mezclaba varias generaciones; hoy son 7 fases de una sola generación, así que tómalo como orientación.</small></p>

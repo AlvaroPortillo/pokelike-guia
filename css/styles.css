@@ -233,6 +233,10 @@ textarea.input { width: 100%; min-height: 8rem; font-family: ui-monospace, monos
 .stat__label { color: var(--ink-3); font-size: var(--step--1); }
 .stat__val { font-family: var(--pixel); font-size: 1.5rem; }
 
+/* Preguntas frecuentes */
+.faq dt { font-weight: 700; margin-top: 1rem; }
+.faq dd { margin: 0.25rem 0 0; }
+
 /* Pasos numerados */
 .steps { counter-reset: s; list-style: none; padding: 0; }
 .steps > li { counter-increment: s; position: relative; padding-left: 2.6rem; margin-bottom: 1rem; }

@@ -3,7 +3,53 @@
 Guía web personal en castellano para completar Pokelike, el roguelike de Pokémon de navegador y móvil
 (https://pokelike.xyz, v3.6.3 del 7-11-2026). La usan el usuario y un amigo.
 
-**Fase actual (12-11-2026): guía completa y publicada en GitHub Pages (https://alvaroportillo.github.io/pokelike-guia/), con secciones Variocolor y Aurora y Novedades (notas de versión). Siguiente paso: rediseño visual moderno (`impeccable` init + PRODUCT.md; Scenario Pro para imágenes).** Commits solo cuando el usuario lo pida.
+**Fase actual (13-11-2026): REDISEÑO VISUAL.** La guía está completa y publicada en GitHub Pages
+(https://alvaroportillo.github.io/pokelike-guia/), pero hay cambios locales SIN commit (ver «Estado del 13-11-2026»).
+Commits y push: los hace el usuario desde VS Code cuando acabe el rediseño (todo en un único envío). No hacer commit
+ni push salvo que lo pida explícitamente.
+
+## Plan (13-11-2026)
+1. **Rediseño visual (ahora).** Pedido por el usuario: usar los skills `impeccable` (flujo `init` → PRODUCT.md /
+   DESIGN.md, luego critique/audit/polish) y `taste-skill` (la guía es pública y la usará su amigo). Seguir las
+   preferencias globales de diseño del usuario: tema oscuro por defecto con soporte claro, 1-2 acentos neón
+   controlados, superficies translúcidas con borde sutil, titulares sans con peso fuerte, transiciones 150-300 ms,
+   radios generosos, espaciado amplio; nada de degradados morados por defecto ni emojis como iconos. No negociable:
+   contraste WCAG AA, focus visible, `prefers-reduced-motion`, funciona a 390 px y 1280 px. Tokens en `:root`.
+   Empezar por `DESIGN.md`, luego la primera pantalla (Inicio) y extender al resto. Verificar con `revisar-diseno`
+   (Playwright a 1280 y 390 px) antes de dar nada por bueno. Mantener la arquitectura (HTML + CSS + JS sin
+   compilación) y no romper el router, el progreso en `localStorage` ni el importador (marcador).
+   Probar en local con `python -m http.server 5179 --bind 127.0.0.1` desde la carpeta del repo.
+2. **Publicar:** el usuario hace un único commit + push desde VS Code con todo (contenido nuevo + rediseño).
+3. **Pendiente de parche:** pasivas del Modo Desafío (esperar al rediseño de objetos anunciado; ver Fuentes).
+
+## Rediseño: decisiones (13-11-2026)
+- Hechos `PRODUCT.md` (flujo `init` de impeccable) y `DESIGN.md` (sistema visual). Uso: los dos jugadores, móvil
+  y PC por igual, para consultar en plena partida, preparar y marcar progreso. De momento no se difunde.
+- Estilo elegido por el usuario tras dos rondas de propuestas (rechazó cartas, metro, retícula suiza, ruta de
+  hierba, pantalla de título, etc.): **Pokémon clásico de Game Boy (Rojo/Azul/Amarillo) con Gengar de mascota**.
+  Lo clásico (Gengar de Rojo/Azul, cuadros con doble borde, menú con cursor ▶) es SOLO el diseño de la app; los
+  Pokémon del contenido, siempre con los sprites actuales. Este estilo manda sobre las preferencias globales.
+- Bocetos y páginas de decisión en `.impeccable/mocks/decision/` (herramienta local; no publicar).
+- Scenario no está conectado en Claude Code: si se quiere usar para imágenes, hay que conectarlo antes.
+- Siguiente: aplicar `DESIGN.md` a Inicio (`css/styles.css` + `index.html`), revisar con `revisar-diseno` a
+  1280 y 390 px, y luego extender al resto de secciones.
+
+## Estado del 13-11-2026 (cambios locales sin commit)
+- Contenido nuevo sacado del Discord oficial (resumen completo en `notas/discord-2026-11-13.md`):
+  - `js/views/inicio.js`: secciones «Cómo subir niveles», «Preguntas frecuentes» y «Comunidad oficial» (+ índice).
+  - `js/views/historia.js`: `COMMUNITY` pasa a lista de bloques con fuente por bloque (pokelike-guide.fr y Discord);
+    consejos nuevos para Kanto, Johto, Hoenn y Teselia.
+  - `js/views/torre.js`: `TOWER_TIPS` con estrategias para las fases 4 (Sinnoh), 5 (Teselia) y 7 (ORAS).
+  - `css/styles.css`: estilos `.faq`.
+  - Probado en local a 1280 y 390 px: sin errores ni desbordes.
+- Progreso del juego del usuario importado en la guía (Firefox, mediante el marcador): 46 logros y 16 desafíos.
+  El usuario juega en **Firefox** (cuenta del juego «aportillo»). El importador funciona: no tocarlo en el rediseño
+  salvo estilos.
+- Revisión diaria creada (rutina en la nube «Revisión diaria Pokelike», 9:00 hora de España = 08:00 UTC,
+  https://claude.ai/code/routines/trig_01RVZqXJju7R7anvWwaT2p8A): compara la versión y PATCH_NOTES de pokelike.xyz
+  con `data/guia.json` y mira r/Pokelike; envía un correo al usuario solo si hay novedades. Solo lectura.
+- Discord: no automatizar su lectura (las normas de Discord lo prohíben para cuentas de usuario). Si hace falta,
+  leerlo a mano con la extensión de Chrome y la sesión del usuario en **Chrome** (no Brave ni la app).
 Lo imprescindible (pedido «sí o sí»): Historia completa con mejores equipos, Torre Batalla con mejores
 combinaciones de tipos, Desafíos, Megaevoluciones. Prioridad: que un amigo novato se pase Historia y Torre.
 
@@ -46,8 +92,8 @@ combinaciones de tipos, Desafíos, Megaevoluciones. Prioridad: que un amigo nova
 ## Estado del repo (12-11-2026)
 - Rama `main` enlazada a `origin` = https://github.com/AlvaroPortillo/pokelike-guia (público).
 - Config local: `push.autoSetupRemote=true`, `pull.rebase=true`, `fetch.prune=true`.
-- La autenticación la hace Git Credential Manager (ya viene con Git). `gh` no está instalado y el usuario no
-  quiere usar cuenta de administrador.
+- La autenticación la hace Git Credential Manager (ya viene con Git). En el PC de casa `gh` sí está instalado y con
+  sesión iniciada en la cuenta AlvaroPortillo (13-11-2026). Clon local: `C:\Users\alvar\Proyectos\pokelike-guia`.
 
 ## Lo investigado del juego (12-11-2026, leyendo la web y su bundle JS, sin iniciar sesión)
 - Todo corre en el navegador: un único bundle `https://pokelike.xyz/js/bundle.<hash>.js`.
@@ -87,4 +133,12 @@ combinaciones de tipos, Desafíos, Megaevoluciones. Prioridad: que un amigo nova
 - Herramienta de terceros: https://github.com/pierpierpy/pokelike.xyz.bot (copia sin servidor para bots).
 - Prensa: https://androidphoria.com/juegos/pokelike-roguelike-de-pokemon
 - No oficiales / clones: pokelike.click, poke-like.com, pokelike.site.
-- No se encontró subreddit r/Pokelike confirmado ni cuenta oficial en X.
+- Reddit oficial: https://www.reddit.com/r/Pokelike/ (confirmado en el faq del Discord el 13-11-2026). Sin cuenta
+  oficial en X.
+- Discord leído el 13-11-2026 (cuenta del usuario, solo lectura, en Chrome): resumen en `notas/discord-2026-11-13.md`.
+  Canales útiles: #announcement (parches), #wiki, #faq, #usercreated-guides, #daily-pokesort-hints. El servidor
+  prohíbe publicar soluciones del Pokésort (la guía la esconde tras «Mostrar solución»).
+- Próximo parche (anunciado en 3.6.1): rediseño de los objetos pasivos. Las pasivas del Modo Desafío no tienen
+  traducción en `I18N.es` (salen en inglés); no añadirlas a la guía hasta que salga ese parche.
+- Nombres en español: `I18N.es` en pokelike.xyz (objetos en `items.name`, habilidades en `abilities.name`,
+  entrenadores y UI en el resto). Comprobar ahí cada nombre antes de escribirlo.

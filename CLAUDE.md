@@ -33,8 +33,9 @@ ni push salvo que lo pida explícitamente.
 - Scenario no está conectado en Claude Code: si se quiere usar para imágenes, hay que conectarlo antes.
 - Hecho: estilo aplicado (Inicio con Gengar, cabecera, menú, cuadros, temas claro/oscuro), música clásica por
   YouTube en una Game Boy (al usuario le encanta) y efectos de sonido sintetizados; en móvil, versión simple.
-- Siguiente: revisar con calma el resto de secciones y cerrar con la revisión de impeccable. Antes: (`css/styles.css` + `index.html`), revisar con `revisar-diseno` a
-  1280 y 390 px, y luego extender al resto de secciones.
+- Revisión completa hecha el 13-11-2026: las 23 rutas a 1280 y 390 px, temas claro y oscuro, sin desbordes ni
+  errores. Corregido: barras de porcentaje sin relleno, desplegables pesados, botón de tema, título de la página
+  inexistente. Lista para pasársela al amigo en cuanto el usuario suba los últimos cambios.
 
 ## Estado del 13-11-2026 (cambios locales sin commit)
 - Contenido nuevo sacado del Discord oficial (resumen completo en `notas/discord-2026-11-13.md`):

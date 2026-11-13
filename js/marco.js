@@ -8,7 +8,9 @@ const themeMeta = document.querySelector('meta[name="theme-color"]');
 
 function paintTheme() {
   const light = root.dataset.theme === 'claro';
-  themeBtn?.setAttribute('aria-pressed', String(light));
+  // El botón dice lo que va a hacer: en claro ofrece el oscuro y al revés.
+  const txt = themeBtn?.querySelector('.theme-btn__txt');
+  if (txt) txt.textContent = light ? 'Tema oscuro' : 'Tema claro';
   themeMeta?.setAttribute('content', light ? '#e3eec0' : '#110c1b');
 }
 

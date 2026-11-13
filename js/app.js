@@ -50,6 +50,7 @@ function render({ keepScroll = false } = {}) {
     if (a.dataset.route === route) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
   });
   if (!view) {
+    document.title = 'Sección no encontrada · Guía Pokelike';
     app.innerHTML = `<div class="note note--warn"><p><strong>Esta sección no existe.</strong> La dirección «${esc(location.hash)}» no corresponde a ninguna parte de la guía. Usa el menú de arriba o vuelve al <a href="#/">inicio</a>.</p></div>`;
     return;
   }

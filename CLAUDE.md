@@ -73,6 +73,13 @@ combinaciones de tipos, Desafíos, Megaevoluciones. Prioridad: que un amigo nova
   `tMegaName`, `tMegaAbilityName`) y se meten en `data/guia.json` con `node tools/add-tower-bosses.js tools/dumps
   data/guia.json` (campo `tower[].bosses`). Los rivales solo usan habilidad mega en la fase 7 (ORAS)
   (`enemyMegaAbilitiesOn`). La Mega Stone ocupa el objeto equipado (no se combina con otro objeto).
+- Sección Objetos (`#/objetos`, añadida el 13-11-2026): 37 equipables (`ITEM_POOL`), 4 de usar (`USABLE_ITEM_POOL`),
+  MT y Tienda Poké del menú (precios, vitaminas: +5 % por punto de EV, límite `min(fases Torre × 10, 50)`).
+  Volcado `tools/dumps/items-es.json` → `node tools/add-items.js tools/dumps data/guia.json` (campo `items`).
+  La casilla «Tienda Poké» del mapa COMPRA tus objetos a cambio de Caramelos Raros (no los vende).
+- Combates del Modo Desafío: NO se pueden listar (el Torneo Mundial elige rivales al azar en cada partida).
+- Menú: por debajo de 1200 px las secciones van en el botón «Menú» (no caben las 12 en la barra); ≤ 860 px,
+  versión simple sin música ni efectos.
 - Pokésort: `js/pokesort-gen.js` reproduce el generador del juego (`pcGeneratePuzzle`); coincide en 20/20 días
   reales. Día del juego = fecha en Europe/Berlin (= España peninsular); el diario Mono-tipo es día % 18.
 - Rasgos de tipo (código): cada Pokémon da 1 punto a cada tipo suyo (+1 si shiny); rango = puntos/2, máx. 12.

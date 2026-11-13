@@ -12,9 +12,10 @@ import progreso from './views/progreso.js';
 import rasgos from './views/rasgos.js';
 import variocolor from './views/variocolor.js';
 import novedades from './views/novedades.js';
+import objetos from './views/objetos.js';
 
-const ROUTES = { '': inicio, historia, torre, rasgos, variocolor, desafios, megas, pokesort, logros, novedades, progreso };
-const TITLES = { '': 'Inicio', historia: 'Historia', torre: 'Torre Batalla', rasgos: 'Rasgos de tipo', variocolor: 'Variocolor y Aurora', desafios: 'Desafíos', megas: 'Megaevoluciones', pokesort: 'Pokésort', logros: 'Logros', novedades: 'Novedades', progreso: 'Mi progreso' };
+const ROUTES = { '': inicio, historia, torre, rasgos, variocolor, desafios, megas, objetos, pokesort, logros, novedades, progreso };
+const TITLES = { '': 'Inicio', historia: 'Historia', torre: 'Torre Batalla', rasgos: 'Rasgos de tipo', variocolor: 'Variocolor y Aurora', desafios: 'Desafíos', megas: 'Megaevoluciones', objetos: 'Objetos', pokesort: 'Pokésort', logros: 'Logros', novedades: 'Novedades', progreso: 'Mi progreso' };
 const app = document.getElementById('app');
 let data = null;
 

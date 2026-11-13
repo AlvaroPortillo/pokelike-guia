@@ -17,6 +17,8 @@ export default {
         <li><a href="#/torre">Torre Batalla <small>7 fases</small></a></li>
         <li><a href="#/desafios">Desafíos <small>${d.challenges.length}</small></a></li>
         <li><a href="#/megas">Megas <small>${d.megas.length}</small></a></li>
+        <li><a href="#/objetos">Objetos <small>${d.items ? d.items.groups.reduce((n, g) => n + g.items.length, 0) : ''}</small></a></li>
+        <li><a href="#/variocolor">Variocolor <small>y Aurora</small></a></li>
         <li><a href="#/pokesort">Pokésort <small>diario</small></a></li>
         <li><a href="#/logros">Logros <small>${d.achievements.length}</small></a></li>
         <li><a href="#/rasgos">Rasgos <small>de tipo</small></a></li>

@@ -1,4 +1,4 @@
-import { esc, typeChips, typeEs, mon, bar } from '../util.js';
+import { esc, typeChip, typeChips, typeEs, mon, bar } from '../util.js';
 import { isDone } from '../store.js';
 import { check, pageHead, seg } from './common.js';
 
@@ -34,6 +34,60 @@ function towerTips(st) {
   </div>`;
 }
 
+// Rasgos que el juego fija a algunos jefes (en vez de calcularlos con su equipo, o además).
+function traitsLine(tr) {
+  if (!tr) return '';
+  const list = (o) => Object.entries(o).map(([ty, n]) => `${typeChip(ty)} <small class="muted">rango ${n}</small>`).join(' ');
+  if (tr.all != null) return `<dt>Rasgos</dt><dd>Los 18 rasgos a rango ${tr.all}</dd>`;
+  if (tr.fixed) return `<dt>Rasgos</dt><dd>${list(tr.fixed)} <small class="muted">· fijados por el juego</small></dd>`;
+  if (tr.extra) return `<dt>Rasgos</dt><dd>${list(tr.extra)} <small class="muted">· además de los de su equipo</small></dd>`;
+  return '';
+}
+
+function bossCard(stage, b) {
+  const id = `tower:${stage}:${b.map}`;
+  const role = b.map === 9 ? 'Jefe final de la fase' : b.map % 3 === 0 ? 'Fin de tramo' : '';
+  const best = b.best.map((r) => `${typeChip(r.type)} <small class="muted">${r.se}/${r.of}</small>`).join(' ');
+  const team = b.team.map((p) => mon(p, {
+    level: p.level,
+    extra: [
+      p.mega ? (p.megaAbility ? `Mega · ${esc(p.megaAbility)}` : 'Mega') : '',
+      p.shiny ? 'Variocolor' : '',
+      p.item ? esc(p.item) : '',
+    ].filter(Boolean).join(' · '),
+  })).join('');
+  return `
+  <article class="map${isDone(id) ? ' is-done' : ''}">
+    <div class="map__n">${b.map}<small>Mapa</small></div>
+    <div>
+      <div class="map__title">${esc(b.name)} ${b.types.length ? typeChips(b.types) : ''}</div>
+      <div class="map__meta">Hasta Nv. ${b.maxLevel}${role ? ` · ${role}` : ''}</div>
+    </div>
+    <div class="map__check">${check(id, 'Superado')}</div>
+    <div class="map__body"><dl class="kv">
+      <dt>Equipo</dt><dd class="team">${team}</dd>
+      ${traitsLine(b.traits)}
+      <dt>Atácale con</dt><dd>${best || '<small class="muted">sin ventaja clara de tipo</small>'}</dd>
+      <dt>Aguanta bien</dt><dd>${b.safe.length ? typeChips(b.safe) : '<small class="muted">ningún tipo resiste todo su equipo</small>'}</dd>
+    </dl></div>
+  </article>`;
+}
+
+function bossesView(t) {
+  if (!t.bosses?.length) return '';
+  const megas = t.bosses.reduce((n, b) => n + b.team.filter((p) => p.mega).length, 0);
+  const megaNote = megas
+    ? (t.stage === 7
+      ? `<p class="muted">En esta fase los rivales megaevolucionados usan también su <strong>habilidad mega</strong> (la tienes al lado de cada uno; qué hace cada una, en <a href="#/megas">Megas</a>).</p>`
+      : '<p class="muted">Las megas de los rivales de esta fase salen ya megaevolucionadas, pero sin habilidad mega (eso solo pasa en la Torre ORAS).</p>')
+    : '';
+  return `
+    <h3 id="jefes">Los 9 jefes de la fase</h3>
+    <p class="muted">Son siempre los mismos: el juego genera cada fase con una semilla fija, así que todos os encontráis los mismos combates. Sacados del propio juego (v3.6.3); «Atácale con» y «Aguanta bien» están calculados con la tabla de tipos, igual que en la Historia.</p>
+    ${megaNote}
+    <div class="maps" style="margin-bottom:2rem">${t.bosses.map((b) => bossCard(t.stage, b)).join('')}</div>`;
+}
+
 function stageView(t, d) {
   const clear = d.achievements.find((a) => a.id === `endless_stage_${t.stage}`);
   const starter = d.achievements.find((a) => a.id === `starters_stage_${t.stage}`);
@@ -64,6 +118,8 @@ function stageView(t, d) {
       </div>
     </div>
 
+    ${bossesView(t)}
+
     <h3>Mejores parejas de tipos para atacar</h3>
     <p class="muted">Porcentaje de los Pokémon finales de la ${esc(gensTxt)} (sin legendarios) que reciben daño supereficaz de al menos uno de los dos tipos. Son los rivales que te vas a encontrar en esta fase.</p>
     <div class="table-wrap"><table><thead><tr><th>Tipos de ataque</th><th>Cobertura supereficaz</th></tr></thead><tbody>${pairs}</tbody></table></div>
@@ -86,7 +142,7 @@ export default {
     const st = Number(sub) || 1;
     const t = d.tower.find((x) => x.stage === st);
     const items = d.tower.map((x) => ({ id: x.stage, label: `${x.stage} · ${x.name}`, done: isDone(`tower:${x.stage}`) }));
-    const head = pageHead('Torre Batalla', 'Se desbloquea al superar la Historia. Son 7 fases (Kanto, Johto, Hoenn, Sinnoh, Teselia, Kalos y ORAS), cada una de 9 mapas con Pokémon de su generación. Cada fase gira en torno a los Pokémon de su generación, así que la clave es la <strong>cobertura de tipos</strong> contra esa generación: aquí la tienes calculada para cada fase.');
+    const head = pageHead('Torre Batalla', 'Se desbloquea al superar la Historia. Son 7 fases (Kanto, Johto, Hoenn, Sinnoh, Teselia, Kalos y ORAS), cada una de 9 mapas con Pokémon de su generación. En cada fase tienes los <strong>9 jefes</strong> con su equipo (megas incluidas). Cada fase gira en torno a los Pokémon de su generación, así que la clave es la <strong>cobertura de tipos</strong> contra esa generación: aquí la tienes calculada para cada fase.');
     if (!t) return `${head}${seg(items, null, 'torre')}<div class="note note--warn"><p>No existe la fase «${esc(sub)}». Elige una de las de arriba.</p></div>`;
     return `${head}
 <div class="note" style="margin-bottom:1.5rem"><p><strong>Qué desbloquea:</strong> la Fase 1 abre el Modo Desafío; la Fase 6 (Kalos) da el Mega Bracelet; la Fase 7 (ORAS) abre las Mega Stones de ORAS. Cada fase superada sube el límite de entrenamiento de EV de la Tienda.</p></div>

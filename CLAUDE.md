@@ -66,6 +66,13 @@ combinaciones de tipos, Desafíos, Megaevoluciones. Prioridad: que un amigo nova
   son cálculos propios (tabla de tipos + estadísticas base del juego) y la web lo dice.
 - Sprites: PokeAPI/sprites en GitHub. Fuente: DotGothic16 (OFL) autoalojada en `assets/fonts`.
 - Kalos: Alto Mando y Campeona salen de `KALOS_ELITE_4` (volcado `ke4.json`).
+- Torre Batalla, jefes de cada mapa (añadidos el 13-11-2026): son fijos, el juego genera cada región con
+  `rollRegion(fase, región)` y semilla fija (fase×1000+región; las 7 fases salen de `FIXED_STAGE_REGIONS`). Se
+  vuelcan con Playwright en pokelike.xyz (`setLanguage('es')`) a `tools/dumps/tower-bosses.json` (crudo) y
+  `tower-bosses-es.json` (equipos montados como en combate con `fetchSpeciesForLevel`, `tSpecies`, `tItemName`,
+  `tMegaName`, `tMegaAbilityName`) y se meten en `data/guia.json` con `node tools/add-tower-bosses.js tools/dumps
+  data/guia.json` (campo `tower[].bosses`). Los rivales solo usan habilidad mega en la fase 7 (ORAS)
+  (`enemyMegaAbilitiesOn`). La Mega Stone ocupa el objeto equipado (no se combina con otro objeto).
 - Pokésort: `js/pokesort-gen.js` reproduce el generador del juego (`pcGeneratePuzzle`); coincide en 20/20 días
   reales. Día del juego = fecha en Europe/Berlin (= España peninsular); el diario Mono-tipo es día % 18.
 - Rasgos de tipo (código): cada Pokémon da 1 punto a cada tipo suyo (+1 si shiny); rango = puntos/2, máx. 12.

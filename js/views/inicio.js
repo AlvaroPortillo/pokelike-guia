@@ -1,5 +1,4 @@
 import { esc, pd } from '../util.js';
-import { pageHead } from './common.js';
 
 export default {
   render(d) {
@@ -8,7 +7,28 @@ export default {
     const totalAch = d.achievements.reduce((s, a) => s + (a.reward || 0), 0);
     const fill = (s, v) => esc(String(s).replace(/\{n\}/g, v));
     return `
-${pageHead('Guía para completar Pokelike', 'Todo lo necesario para pasarse la <strong>Historia</strong> y la <strong>Torre Batalla</strong>, los <strong>Desafíos</strong>, las <strong>Megaevoluciones</strong> y el <strong>Pokésort</strong> diario. Los nombres salen tal cual aparecen con el juego en español.')}
+<header class="hero">
+  <div class="hero__txt">
+    <h1>Guía para completar <span>Pokelike</span></h1>
+    <p class="hero__lede">Todo lo necesario para pasarse la <strong>Historia</strong> y la <strong>Torre Batalla</strong>, los <strong>Desafíos</strong>, las <strong>Megaevoluciones</strong> y el <strong>Pokésort</strong> diario. Los nombres salen tal cual aparecen con el juego en español.</p>
+    <nav class="hero-menu" aria-label="Secciones de la guía">
+      <ul>
+        <li><a href="#/historia">Historia <small>6 regiones</small></a></li>
+        <li><a href="#/torre">Torre Batalla <small>7 fases</small></a></li>
+        <li><a href="#/desafios">Desafíos <small>${d.challenges.length}</small></a></li>
+        <li><a href="#/megas">Megas <small>${d.megas.length}</small></a></li>
+        <li><a href="#/pokesort">Pokésort <small>diario</small></a></li>
+        <li><a href="#/logros">Logros <small>${d.achievements.length}</small></a></li>
+        <li><a href="#/rasgos">Rasgos <small>de tipo</small></a></li>
+        <li><a href="#/progreso">Mi progreso</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="hero__gengar" aria-hidden="true">
+    <img src="assets/gengar-amarillo.png" alt="" width="56" height="56">
+    <span class="hero__shadow"></span>
+  </div>
+</header>
 
 <div class="cols">
 <div>
@@ -98,17 +118,6 @@ ${pageHead('Guía para completar Pokelike', 'Todo lo necesario para pasarse la <
     <li><a href="#faq">Preguntas frecuentes</a></li>
     <li><a href="#comunidad">Comunidad oficial</a></li>
     <li><a href="#probabilidades">Variocolor y Aurora</a></li>
-  </ol>
-  <h3>Secciones</h3>
-  <ol>
-    <li><a href="#/historia">Historia: 6 regiones</a></li>
-    <li><a href="#/torre">Torre Batalla: 7 fases</a></li>
-    <li><a href="#/desafios">Desafíos</a></li>
-    <li><a href="#/megas">Megaevoluciones (${d.megas.length})</a></li>
-    <li><a href="#/pokesort">Pokésort diario</a></li>
-    <li><a href="#/logros">Logros (${d.achievements.length})</a></li>
-    <li><a href="#/rasgos">Rasgos de tipo</a></li>
-    <li><a href="#/novedades">Novedades del juego</a></li>
   </ol>
 </aside>
 </div>`;

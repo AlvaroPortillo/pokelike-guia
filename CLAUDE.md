@@ -31,7 +31,9 @@ ni push salvo que lo pida explícitamente.
   Pokémon del contenido, siempre con los sprites actuales. Este estilo manda sobre las preferencias globales.
 - Bocetos y páginas de decisión en `.impeccable/mocks/decision/` (herramienta local; no publicar).
 - Scenario no está conectado en Claude Code: si se quiere usar para imágenes, hay que conectarlo antes.
-- Siguiente: aplicar `DESIGN.md` a Inicio (`css/styles.css` + `index.html`), revisar con `revisar-diseno` a
+- Hecho: estilo aplicado (Inicio con Gengar, cabecera, menú, cuadros, temas claro/oscuro), música clásica por
+  YouTube en una Game Boy (al usuario le encanta) y efectos de sonido sintetizados; en móvil, versión simple.
+- Siguiente: revisar con calma el resto de secciones y cerrar con la revisión de impeccable. Antes: (`css/styles.css` + `index.html`), revisar con `revisar-diseno` a
   1280 y 390 px, y luego extender al resto de secciones.
 
 ## Estado del 13-11-2026 (cambios locales sin commit)

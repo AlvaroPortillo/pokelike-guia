@@ -161,3 +161,15 @@ Movimiento **a saltos**, como en la Game Boy: `steps()` en vez de suavizados lar
 - No usar el verde pantalla para algo que no sea «hecho / progreso», ni el rojo para algo que no sea la acción
   o la posición actual.
 - No tocar el router, el progreso (`localStorage`) ni el importador: el rediseño es de estilos y de marcado.
+
+## 10. Sonido (solo escritorio)
+
+- **Música** (botón «Música» en la cabecera, activar/desactivar): canciones originales de Pokémon Rojo/Azul
+  servidas desde YouTube (js/musica.js, lista TRACKS). Nunca se suben archivos de audio al repo. Se ven en
+  la pantalla de una Game Boy pequeña abajo a la derecha («GAME GENGAR»), porque YouTube exige que el
+  reproductor se vea y mida al menos 200×200 px. Pasa sola a la siguiente, tiene aleatorio y salta las que
+  fallen. No se conecta a YouTube hasta pulsar el botón (dominio youtube-nocookie).
+- **Efectos** (botón «Efectos»): pitidos de onda cuadrada sintetizados en el navegador con el timbre de la
+  Game Boy (js/sonidos.js): seleccionar, cambiar de sección, abrir/cerrar menú, marcar/desmarcar, cambiar de
+  tema y error. Son sonidos propios, no grabaciones de los juegos.
+- **Móvil (≤ 860 px): versión simple**, sin música ni efectos (lo pidió el usuario: allí casi no se usa).

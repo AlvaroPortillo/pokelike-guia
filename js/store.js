@@ -58,6 +58,10 @@ export function doneSource(id) {
   const chal = gameChal();
   if (kind === 'chal' && chal.has(a)) return 'game';
   if (kind === 'mono' && chal.has(`monotype:${a}`)) return 'game';
+  // v3.7: el juego guarda las medallas del Desafío de Gimnasios como «badge:N» (la 0 también con «intro»)
+  // y los premios Hardcore de la Torre como «towerhc:N».
+  if (kind === 'badge' && (chal.has(`badge:${a}`) || (a === '0' && chal.has('intro')))) return 'game';
+  if (kind === 'towerhc' && chal.has(`towerhc:${a}`)) return 'game';
   return null;
 }
 export const isDone = (id) => doneSource(id) !== null;

@@ -29,7 +29,7 @@ ${pageHead('Objetos', `Los ${it.groups.reduce((n, g) => n + g.items.length, 0)} 
   <h2 id="como">Cómo funcionan</h2>
   <ul>
     <li>Los consigues en las casillas de <strong>objeto</strong> del mapa y en los eventos. La casilla de la <strong>Tienda Poké</strong> del mapa no te los da: te los compra a cambio de Caramelos Raros (en el juego sale como «${esc(it.martNode)}»).</li>
-    <li>Cada Pokémon lleva <strong>un objeto equipado</strong>. Bolsa de hasta ${c.maxBag}; pasivas activas a la vez: hasta ${c.maxPassives}.</li>
+    <li>Cada Pokémon lleva <strong>un objeto equipado</strong>. Bolsa de hasta ${c.maxBag}. Aparte van las <a href="#/reliquias">Reliquias</a> (antes «pasivas»), hasta ${c.maxPassives} a la vez.</li>
     <li>La <strong>Mega Stone también ocupa el hueco del objeto</strong>: un Pokémon megaevolucionado no puede llevar además otro objeto (ver <a href="#/megas">Megas</a>).</li>
     <li>Algunos solo salen a partir de cierto mapa: lo tienes en la última columna.</li>
   </ul>
@@ -79,9 +79,9 @@ ${pageHead('Objetos', `Los ${it.groups.reduce((n, g) => n + g.items.length, 0)} 
   <ul>
     ${m.vitamins.map((v) => `<li><strong>${esc(v.name)}</strong>: ${esc(v.stat)}</li>`).join('')}
   </ul>
-  <p>${esc(m.capLocked)}. El límite es de <strong>10 puntos de EV por cada fase de la Torre superada</strong>, hasta 50 por Pokémon (por línea evolutiva). Solo cuentan en la Torre Batalla y en el Modo Desafío.</p>
+  <p>${esc(m.capLocked)}. El límite es de <strong>10 puntos de EV por cada fase de la Torre superada</strong>, hasta 50 por Pokémon (por línea evolutiva). Solo cuentan en la Torre Batalla y en el Desafío de Gimnasios.</p>
 
-  <div class="note note--warn"><p><strong>Pasivas del Modo Desafío:</strong> no están en la guía a propósito. El juego aún no las tiene traducidas y el próximo parche rehace los objetos pasivos; se añadirán cuando salga.</p></div>
+  <div class="note"><p><strong>Reliquias:</strong> los antiguos objetos pasivos del Desafío y de la Torre. Desde la v3.7 tienen su propia sección: <a href="#/reliquias">Reliquias</a>.</p></div>
 </div>
 
 <aside class="toc panel" aria-label="En esta página">

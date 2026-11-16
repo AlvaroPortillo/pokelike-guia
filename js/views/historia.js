@@ -25,7 +25,7 @@ const COMMUNITY = {
     {
       src: FR('gen-2-strategy/', 'Estrategia de Johto'),
       html: `<p><strong>Johto es la más difícil.</strong> El Rival Silver gana Doble EXP (el propio juego lo indica en su casilla), así que es arriesgado. Mejor inicial: Cyndaquil (Typhlosion); Espeon funciona como atacante Psíquico.</p>
-      <p><strong>Equipo con el que la comunidad completó Johto:</strong> Typhlosion (Carbón), Espeon (Cuchara Torcida), Honchkrow (Restos), Tyranitar, Scizor (Periscopio) y Skarmory. Tyranitar y Skarmory llevaban dos objetos que, según la misma guía, hoy solo existen en el Modo Desafío: dales otro objeto.</p>`,
+      <p><strong>Equipo con el que la comunidad completó Johto:</strong> Typhlosion (Carbón), Espeon (Cuchara Torcida), Honchkrow (Restos), Tyranitar, Scizor (Periscopio) y Skarmory. Tyranitar y Skarmory llevaban dos objetos que, según la misma guía, hoy solo existen en el Desafío de Gimnasios: dales otro objeto.</p>`,
     },
     {
       src: DC('blooddealer', 'Gen2 StoryMode'),

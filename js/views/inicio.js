@@ -18,6 +18,7 @@ export default {
         <li><a href="#/desafios">Desafíos <small>${d.challenges.length}</small></a></li>
         <li><a href="#/megas">Megas <small>${d.megas.length}</small></a></li>
         <li><a href="#/objetos">Objetos <small>${d.items ? d.items.groups.reduce((n, g) => n + g.items.length, 0) : ''}</small></a></li>
+        <li><a href="#/reliquias">Reliquias <small>${d.relics ? d.relics.total : ''}</small></a></li>
         <li><a href="#/variocolor">Variocolor <small>y Aurora</small></a></li>
         <li><a href="#/pokesort">Pokésort <small>diario</small></a></li>
         <li><a href="#/logros">Logros <small>${d.achievements.length}</small></a></li>
@@ -40,7 +41,7 @@ export default {
   <ul>
     <li><strong>${esc(n.catchPokemon)}</strong>: eliges uno de varios Pokémon para tu equipo.</li>
     <li><strong>${fill(n.wildBattle, 1)}</strong> y <strong>${fill(n.trainerBattle, 'N')}</strong>: ganas niveles para todo el equipo.</li>
-    <li><strong>${esc(n.item)}</strong>: un objeto (bolsa de hasta ${c.maxBag}; pasivas activas a la vez: hasta ${c.maxPassives}).</li>
+    <li><strong>${esc(n.item)}</strong>: un objeto (bolsa de hasta ${c.maxBag}).</li>
     <li><strong>${esc(n.randomEvent)}</strong> (casilla «?»): puede salir de todo.</li>
     <li><strong>${esc(n.pokemonCenter)}</strong>: cura al equipo.</li>
     <li><strong>${esc(n.tradeNode).replace('{n}', 'N')}</strong>.</li>
@@ -52,7 +53,7 @@ export default {
   <h2 id="orden">En qué orden se desbloquea todo</h2>
   <ol class="steps">
     <li><strong>Historia · Kanto.</strong> Es lo primero que hay abierto. Elige «Clásico» (sin muerte permanente). Al ganarla se abren Johto y la Torre Batalla. <a href="#/historia/1">Ver guía de Kanto</a>.</li>
-    <li><strong>Torre Batalla · Fase 1 (Kanto).</strong> «Supera el modo Historia para desbloquear». Al superar la Fase 1 se abre el <strong>Modo Desafío</strong>. <a href="#/torre/1">Ver Fase 1</a>.</li>
+    <li><strong>Torre Batalla · Fase 1 (Kanto).</strong> «Supera el modo Historia para desbloquear». Al superar la Fase 1 se abre el <strong>Desafío de Gimnasios</strong>. <a href="#/torre/1">Ver Fase 1</a>.</li>
     <li><strong>Resto de regiones de la Historia</strong> (Johto, Hoenn, Sinnoh, Teselia, Kalos) y <strong>Fases 2 a 7 de la Torre</strong>. Cada fase superada sube también el límite de entrenamiento de EV en la Tienda.</li>
     <li><strong>Megaevoluciones.</strong> El Mega Bracelet se consigue al superar la <strong>Torre de Kalos (Fase 6)</strong>; las Mega Stones de ORAS, al superar la <strong>Fase 7</strong>. <a href="#/megas">Ver megas</a>.</li>
     <li><strong>Desafíos, Pokésort y logros</strong> para ir sacando dinero y completar el juego. Los logros dan en total <strong>${pd(totalAch)}</strong>.</li>
@@ -86,7 +87,7 @@ export default {
   <h2 id="faq">Preguntas frecuentes</h2>
   <dl class="faq">
     <dt>¿Cómo desbloqueo un Pokémon como inicial?</dt>
-    <dd>Gana una partida con él en el equipo y regístralo en el Salón de la Fama (con legendarios no vale), o cómpralo en huevo en la Tienda Poké (ahí sí hay legendarios, pero no salen Celebi, Jirachi, Shaymin, Victini ni Hoopa). Los Pokémon que te dan algunas pasivas del Modo Desafío, las que cambian tu equipo por Pokémon al azar o te dan un legendario (Star Piece, Comet Shard, Legends Call), no se desbloquean.</dd>
+    <dd>Gana una partida con él en el equipo y regístralo en el Salón de la Fama (con legendarios no vale), o cómpralo en huevo en la Tienda Poké (ahí sí hay legendarios, pero no salen Celebi, Jirachi, Shaymin, Victini ni Hoopa). Los Pokémon que te dan algunas reliquias, las que cambian tu equipo por Pokémon al azar o te dan un legendario, no se desbloquean (las de antes de la 3.7 eran Trozo Estrella, Fragmento Cometa y Llamada Legendaria; ya no salen en partidas nuevas).</dd>
     <dt>¿Qué significa la Poké Ball o la Super Ball en las capturas?</dt>
     <dd>Poké Ball: ya lo tienes en la Pokédex, pero aún no es inicial. Super Ball: ya puedes empezar con él. A veces los variocolor salen con Poké Ball por error.</dd>
     <dt>¿Dónde encuentro el Pokémon que quiero?</dt>

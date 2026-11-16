@@ -37,6 +37,10 @@ ${pageHead('Megaevoluciones', `En Pokelike las megas se consiguen así (textos d
     <p class="muted">Consejo: empieza por las de 1 victoria con iniciales (Venusaur, Charizard, Blastoise…) porque ya los usas para ganar.</p>
   </div>
 </div>
+${d.megaTokens ? `<div class="note" style="margin-bottom:1.5rem">
+  <p><strong>Fichas Mega (v3.7):</strong> son un atajo. Ganar una partida de Desafío como MVP sigue sumando <strong>1</strong> victoria a esa línea, como siempre. Una ficha, en cambio, la gastas tú en la piedra bloqueada que quieras y le suma <strong>${d.megaTokens.mvp} victorias MVP</strong> de golpe. En el juego: «${esc(d.megaTokens.hint)}»</p>
+  <p>Solo hay 3: <strong>2</strong> por la <a href="#/desafios">Medalla Volcán</a> del Desafío de Gimnasios y <strong>1</strong> por superar la <a href="#/torre/6">Fase 6 (Kalos) en Hardcore</a>. Valen para cualquier piedra, también las de 50 victorias, pero no cuentan para los hitos de Pokédólares MVP. Úsalas en las piedras que más victorias piden.</p>
+</div>` : ''}
 
 <nav class="seg" aria-label="Filtrar megas">${btn('todas', 'Todas')}${tiers.map((t) => btn(String(t), `${t} MVP`)).join('')}${btn('oras', 'Solo ORAS')}</nav>
 <div class="table-wrap"><table>

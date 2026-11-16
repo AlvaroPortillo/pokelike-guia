@@ -19,7 +19,7 @@ Los nombres salen tal cual aparecen con el juego en español, incluso los que el
 
 ## De dónde salen los datos
 
-- Del propio juego, versión 3.6.3, leído el 12-11-2026 con el idioma en español.
+- Del propio juego, versión 3.7.1, leído el 16-11-2026 con el idioma en español (jefes de la Torre y rasgos, de la 3.6.3).
 - Los equipos sugeridos y las coberturas de tipos están **calculados** con la tabla de tipos y las estadísticas base del juego.
 - Los consejos de la comunidad vienen de [pokelike-guide.fr](https://pokelike-guide.fr/es/), enlazada en cada sitio donde se usa.
 

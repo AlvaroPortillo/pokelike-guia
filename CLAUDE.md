@@ -77,6 +77,15 @@ combinaciones de tipos, Desafíos, Megaevoluciones. Prioridad: que un amigo nova
   MT y Tienda Poké del menú (precios, vitaminas: +5 % por punto de EV, límite `min(fases Torre × 10, 50)`).
   Volcado `tools/dumps/items-es.json` → `node tools/add-items.js tools/dumps data/guia.json` (campo `items`).
   La casilla «Tienda Poké» del mapa COMPRA tus objetos a cambio de Caramelos Raros (no los vende).
+- **v3.7 / 3.7.1 (añadido el 16-11-2026):** volcado `tools/dumps/v37-raw.txt` (evaluando en pokelike.xyz con
+  `setLanguage('es')`: `PASSIVE_ITEM_POOL` + `I18N.es.items` (name/desc/short), `PASSIVE_KITS`, `CHALLENGE_BADGES`,
+  `chalBadgeClearPay`, `TOWER_HC_REWARDS`, `MEGA_TOKEN_MVP`, `WEEKLY_CHALLENGES`, `CHALLENGES`, `ACHIEVEMENTS`,
+  `PATCH_NOTES` y `I18N.es.ui` (`chalBadge`, `towerHc`, `gamePassive`, `passiveKit`, `mega`)) →
+  `node tools/add-37.js tools/dumps data/guia.json` (campos `relics`, `gymChallenge`, `tower[].hcReward`, `towerHc`,
+  `megaTokens`; refresca `weekly`, `challenges`, `achievements`, `patchNotes`, `version`).
+  Sección nueva `#/reliquias`. El juego guarda medallas como `badge:N` (la 0 también con `intro`) y premios Hardcore
+  como `towerhc:N` en `poke_challenges_done`; el importador ya los marca (`badge:N`, `towerhc:N` en `store.js`).
+  El «Modo Desafío» ahora se llama «Desafío de Gimnasios». Jefes de la Torre y rasgos siguen siendo de la 3.6.3.
 - Combates del Modo Desafío: NO se pueden listar (el Torneo Mundial elige rivales al azar en cada partida).
 - Menú: por debajo de 1200 px las secciones van en el botón «Menú» (no caben las 12 en la barra); ≤ 860 px,
   versión simple sin música ni efectos.
@@ -155,7 +164,6 @@ combinaciones de tipos, Desafíos, Megaevoluciones. Prioridad: que un amigo nova
 - Discord leído el 13-11-2026 (cuenta del usuario, solo lectura, en Chrome): resumen en `notas/discord-2026-11-13.md`.
   Canales útiles: #announcement (parches), #wiki, #faq, #usercreated-guides, #daily-pokesort-hints. El servidor
   prohíbe publicar soluciones del Pokésort (la guía la esconde tras «Mostrar solución»).
-- Próximo parche (anunciado en 3.6.1): rediseño de los objetos pasivos. Las pasivas del Modo Desafío no tienen
-  traducción en `I18N.es` (salen en inglés); no añadirlas a la guía hasta que salga ese parche.
+- El rediseño de los objetos pasivos salió en la 3.7 (ahora «Reliquias», todas traducidas): ya están en la guía.
 - Nombres en español: `I18N.es` en pokelike.xyz (objetos en `items.name`, habilidades en `abilities.name`,
   entrenadores y UI en el resto). Comprobar ahí cada nombre antes de escribirlo.

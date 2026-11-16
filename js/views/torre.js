@@ -109,6 +109,7 @@ function stageView(t, d) {
       <div class="panel">
         <h3>Tu marca</h3>
         <p>${check(`tower:${t.stage}`, `Fase ${t.stage} superada`)}</p>
+        ${t.hcReward ? `<p>${check(`towerhc:${t.stage}`, `Fase ${t.stage} superada en Hardcore`, 'Superada en Hardcore')} <small class="muted">· ${esc(d.towerHc?.label || 'Premio Hardcore')}: <strong>${esc(t.hcReward)}</strong></small></p>` : ''}
         ${starter ? `<p class="muted">Logro extra: <strong>${esc(starter.name)}</strong>: ${esc(starter.desc)}.</p>` : ''}
         <p class="muted">Pokémon finales disponibles en esta generación: ${t.finals}. Tipos más comunes entre ellos: ${common}.</p>
       </div>
@@ -145,7 +146,20 @@ export default {
     const head = pageHead('Torre Batalla', 'Se desbloquea al superar la Historia. Son 7 fases (Kanto, Johto, Hoenn, Sinnoh, Teselia, Kalos y ORAS), cada una de 9 mapas con Pokémon de su generación. En cada fase tienes los <strong>9 jefes</strong> con su equipo (megas incluidas). Cada fase gira en torno a los Pokémon de su generación, así que la clave es la <strong>cobertura de tipos</strong> contra esa generación: aquí la tienes calculada para cada fase.');
     if (!t) return `${head}${seg(items, null, 'torre')}<div class="note note--warn"><p>No existe la fase «${esc(sub)}». Elige una de las de arriba.</p></div>`;
     return `${head}
-<div class="note" style="margin-bottom:1.5rem"><p><strong>Qué desbloquea:</strong> la Fase 1 abre el Modo Desafío; la Fase 6 (Kalos) da el Mega Bracelet; la Fase 7 (ORAS) abre las Mega Stones de ORAS. Cada fase superada sube el límite de entrenamiento de EV de la Tienda.</p></div>
+<div class="note" style="margin-bottom:1.5rem"><p><strong>Qué desbloquea:</strong> la Fase 1 abre el Desafío de Gimnasios; la Fase 6 (Kalos) da el Mega Bracelet; la Fase 7 (ORAS) abre las Mega Stones de ORAS. Cada fase superada sube el límite de entrenamiento de EV de la Tienda.</p></div>
+<div class="grid-2" style="margin-bottom:1.5rem">
+  <div class="panel">
+    <h3>Normal o Hardcore (desde la v3.7)</h3>
+    <p><strong>Normal</strong> se juega con <a href="#/reliquias">Reliquias</a>: una inicial y otra tras cada combate contra entrenadores. <strong>Hardcore</strong> es la torre de siempre, sin reliquias.</p>
+    <p>Cada modo desbloquea sus propias fases. Superar una en Hardcore también desbloquea la siguiente en Normal, y todo lo superado antes de la 3.7 cuenta como Hardcore.</p>
+  </div>
+  <div class="panel">
+    <h3>${esc(d.towerHc?.label || 'Premio Hardcore')} de cada fase</h3>
+    <p class="muted">${esc(d.towerHc?.tip || '')} Las fases que ya superaste antes pagan la próxima vez que abras la torre.</p>
+    <ul>${d.tower.filter((x) => x.hcReward).map((x) => `<li>${isDone(`towerhc:${x.stage}`) ? '✓ ' : ''}<strong>${esc(x.name)}</strong>: ${esc(x.hcReward)}</li>`).join('')}</ul>
+    <p class="muted">Los huevos Aurora dan siempre un Pokémon Aurora de una línea que aún no tienes en Aurora; se abren desde la carta de ORAS.</p>
+  </div>
+</div>
 ${seg(items, st, 'torre')}
 ${stageView(t, d)}
 ${towerTips(st)}
